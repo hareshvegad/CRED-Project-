@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for task in tasks %}
+        <p>
+            {{ task.title }} - {{ task.description }} - {{ task.completed }}
+            <a href="{% url 'task_update' task.id %}">Edit</a>
+            <a href="{% url 'task_delete' task.id %}" onclick="return confirm('Are you sure you want to delete this task?');">Delete</a>
+        </p>
+{% endfor %}
+<a href="{% url 'task_create' %}">Create Task</a>
+{% endblock %}
